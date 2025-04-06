@@ -1,0 +1,93 @@
+.style_thongtin{
+    width: 100%;
+    display: flex;
+}
+.style_trai{
+    background: rgb(241, 234, 234);
+    padding-bottom:30px;
+    position:sticky;
+    top:0px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    width: 65vh;
+    padding:20px;
+    height: 92vh;
+}
+
+.style_phai{
+    width:100%;
+    background-color: aliceblue;
+    display: flex;
+    flex-wrap: wrap;
+    position:sticky;
+    top:0px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    padding: 20px 15px;
+    height: 92vh;
+    padding-left: 60px;
+   
+}
+/* .form_phong{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} */
+.hienthi_thongtin{
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+}
+.hienthi_thongtin label{
+    font-size: 15px;
+}
+
+.label_phong{
+    font-size: 18px;
+    font-family: var(--bs-body-font-family);
+    margin-bottom: 6px;
+
+}
+#txtMaP, #txtTenP,#txtLoaiP, #txtGiaP, #txtMoTa, #txtSoLuong, #txtSoNguoi {
+    border-radius: 4px;
+    height: 32px;
+    display: block;
+}
+.chucnang_thongtin {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    font-size: 15px;
+
+}
+.chucnang_thongtin button{
+    background-color: #f57234;
+    color: white;
+    width: 130px;
+    border-radius: 10px;
+    height: 40px;
+}
+.edit_phong, .delete_phong , .save_phong{
+    border: none;
+    background: rgb(241, 234, 234);
+}
+
+
+.style_phai img{
+    height: 220px;
+    width: 150px;
+}
+.ten_sv{
+    font-size: 15px;
+    color: blue;
+    font-weight: 600;
+}
+.sdt_sv{
+    font-size: 15px;
+    color: red;
+    font-weight: 600;
+}
+.container_anh{
+    padding-right: 60px;
+    margin-bottom: 15px;
+}

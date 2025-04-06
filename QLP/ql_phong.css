@@ -1,0 +1,242 @@
+body {
+    scrollbar-width: none;
+    padding: 0 20px 0 20px;
+}
+
+.style_phong {
+    width: 100%;
+    height: 900px;
+    display: flex;
+    overflow-y: hidden;
+}
+
+.menu_phong {
+    width: fit-content;
+    position: sticky;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    top: 16px;
+    background-color: transparent;
+    flex-direction: column;
+    color: rgb(56, 56, 61);
+    font-size: 14px;
+    line-height: 20px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background-color: #415a6f;
+    height: 100%;
+}
+
+.list {
+    position: sticky;
+    top: 0px;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.title_phong {
+    font-weight: 700;
+    color: #efe7e3;
+    display: flex;
+    margin: 0 auto;
+    font-size: 16px;
+    padding-right: 12%;
+    margin-bottom: 10px;
+}
+
+.danh_sach {
+    background: #fffcfa;
+    width: 100%;
+}
+
+.container_trai {
+    display: flex;
+    flex-direction: column;
+    background-color: #415a6f;
+    width: 174px;
+    height: 100%;
+}
+
+.title_sophong {
+    color: #fff2f2;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    font-weight: bold;
+    line-height: 24px;
+    color: #fff2f2;
+    font-family: Inter, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
+#icon_phongNam {
+    font-size: 22px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    color: #ffb137;
+}
+
+#icon_phongNu {
+    font-size: 22px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    color: #f197a2;
+}
+
+.ql_phong {
+    background-color: #415a6f;
+}
+
+.ql_phong a {
+    display: flex;
+    padding: 12px 16px;
+    -webkit-box-align: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+    margin: auto 0;
+}
+
+.ql_phong a:hover,
+.ql_phong button:hover {
+    background-color: #f6efec;
+}
+
+.ql_phong a:hover .title_sophong,
+.ql_phong button:hover .title_sophong {
+    color: #f57234;
+}
+
+.ql_phong a:hover #icon_phong,
+.ql_phong button:hover #icon_phong {
+    color: #f57234;
+}
+
+.title_ds {
+    font-weight: 700;
+    font-size: 21px;
+    color: #f57234;
+    margin: -15px;
+    text-align: center;
+}
+
+.timkiem_phong {
+    margin-top: 10px;
+    gap: 10px;
+    display: flex;
+    margin-left: 13px;
+}
+
+.timkiem_phong .header {
+    display: flex;
+}
+
+.search_phong {
+    border-radius: 5px;
+    width: 300px;
+    height: 35px;
+    margin-right: 10px;
+    border-color: #415a6f;
+    margin-bottom: 10px;
+}
+
+.btn_searchP {
+    height: 35px;
+    width: 90px;
+    border-radius: 3px;
+    padding-top: 2px;
+    background-color: #415a6f;
+    color: white;
+    border: none;
+}
+
+.them_phong {
+    text-align: center;
+    background-color: #f57234;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0px;
+    width: 100%;
+    position: sticky;
+    top: 0px;
+}
+
+.them_phong i {
+    color: white;
+    font-size: 25px;
+}
+
+.re_load i {
+    color: #415a6f;
+}
+
+.add_phong i {
+    margin: 0 auto;
+    padding-right: 12%;
+}
+
+.add_phong {
+    border: none;
+    background: #f57234;
+}
+
+.form_themP {
+    line-height: 35px;
+}
+
+.modal-body {
+    margin-top: -15px;
+}
+
+.modal-title {
+    color: #f57234;
+}
+
+.save_themP {
+    border: none;
+    background: #f57234;
+    color: white;
+    font-size: 20px;
+}
+
+.save_themPhong {
+    margin-top: 15px;
+    text-align: center;
+    background: #f57234;
+    border-radius: 5px;
+}
+
+.xoa_phong {
+    border: none;
+    font-size: 25px;
+    color: white;
+    background: #f57234;
+}
+
+.xoa_P {
+    text-align: center;
+    background: #f57234;
+    line-height: 40px;
+}
+
+.form_xoa {
+    text-align: center;
+}
+
+.re_load {
+    background: white;
+    font-size: 24px;
+    border: none;
+}
+
+#rdoNam {
+    margin-top: 10px;
+}
+
+#rdoNu {
+    margin-top: 10px;
+}
