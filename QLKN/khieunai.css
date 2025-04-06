@@ -1,0 +1,222 @@
+html {
+    padding: 0 20px 0 20px;
+}
+
+.header {
+    background-color: white;
+    padding: 15px;
+    display: flex;
+    gap: 15px;
+}
+
+.header .txtsearch {
+    width: 100%;
+    padding: 5px 4px;
+    background-color: rgb(235, 235, 235);
+    border: 1px solid lightgray;
+}
+
+.header .search-btn {
+    padding: 5px 20px;
+    background-color: #f57234;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.header select {
+    padding: 5px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.add_khieunai {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    background-color: #f57234;
+    padding: 7px 20px;
+    border-radius: 10px;
+    display: flex;
+    white-space: nowrap;
+    color: white;
+}
+
+.add_khieunai i {
+    font-size: 20px;
+    margin-top: 3px;
+}
+
+.container {
+    max-width: 200%;
+    font-size: 15px;
+}
+
+th,
+tr {
+    font-size: 15px;
+    margin-top: 0px;
+}
+
+.thaotac {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.thaotac a {
+    padding: 5px 30px;
+}
+
+.edit {
+    padding: 2px 5px;
+    display: flex;
+    border: none;
+    border-radius: 10px;
+    align-items: center;
+    background: #f57234;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.delete {
+    padding: 5px 10px;
+    display: flex;
+    border: none;
+    border-radius: 10px;
+    align-items: center;
+    background: #ffd34f;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.contain {
+    background: #fff;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: black;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    color: white;
+    line-height: 40px;
+}
+
+button {
+    width: 48%;
+    padding: 10px;
+    color: #fff;
+    background-color: #f57234;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+button:hover {
+    background-color: #ffd34f;
+}
+
+.form-group-btn {
+    display: flex;
+    justify-content: space-around;
+}
+
+.back {
+    padding: 10px;
+    background-color: #f57234;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+.back:hover {
+    background-color: #f57234;
+}
+
+#txtNoidung {
+    height: 280px;
+    width: 100%;
+    border: none;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 1.5;
+    resize: vertical;
+    font-family: 'Roboto', Helvetica;
+    font-size: 16px;
+}
+
+#txtTieude {
+    height: -200px;
+    width: 100%;
+    border: none;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 1.5;
+    resize: vertical;
+    font-family: 'Roboto', Helvetica;
+    font-size: 16px;
+}
+
+.form-group-content {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.container-add {
+    width: 600px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.form-group {
+    border: 1px solid #f57234;
+    color: black;
+    padding: 4px;
+}
+
+.form-group input,
+.form-group select {
+    border: none;
+    height: 30px;
+}
+
+.form-group label {
+    font-size: 15px;
+}
+
+.text-ellipsis {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: top;
+}
