@@ -1,0 +1,79 @@
+body {
+    padding: 0 20px 0 20px;
+}
+
+.header {
+    background-color: white;
+    padding: 15px;
+    display: flex;
+    gap: 15px;
+}
+
+.header .txtsearch {
+    width: 80%;
+    padding: 5px 4px;
+    background-color: rgb(235, 235, 235);
+    border: 1px solid lightgray;
+}
+
+.header .search-btn {
+    padding: 5px 20px;
+    background-color: #f57234;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.add_hopdong {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    background-color: rgb(176, 202, 251);
+    ;
+    padding: 5px 15px;
+    border-radius: 10px;
+    display: flex;
+    white-space: nowrap;
+}
+
+.them_hopdong i {
+    font-size: 20px;
+}
+
+.container {
+    max-width: 100%;
+    font-size: 15px;
+}
+
+th,
+tr {
+    font-size: 18px;
+}
+
+.thao_tac {
+    display: flex;
+    gap: 10px;
+}
+
+.Sua {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    background: #6ac26a;
+    padding: 5px 20px;
+    border-radius: 10px;
+    display: flex;
+    white-space: nowrap;
+}
+
+.Xoa {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    background: #ffd34f;
+    padding: 5px 10px;
+    border-radius: 10px;
+    display: flex;
+    white-space: nowrap;
+}
