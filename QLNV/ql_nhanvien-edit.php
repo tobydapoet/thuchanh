@@ -10,45 +10,74 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <script src="load.js"></script>
-    <link rel="stylesheet" type="text/css" href=ql_nhanvien_sinhvien-function.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" type="text/css" href="qlnhanvien.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <form enctype="multipart/form-data" method="post">
         <?php
-            if(isset($_POST['btn-cancel']))
-            {
-                $masinhvien = $_GET['MaSV'];
-                $maphong=$_POST['room'];
-                $result1 = mysqli_query($conn,"UPDATE tbl_sinhvien SET TrangThai = '0'  WHERE MaSV='$masinhvien'");
-                if($result1)
-                {
-                    $result2 = mysqli_query($conn,"UPDATE tbl_phong SET SoSV = SoSV - 1 WHERE MaPhong = '$maphong'");
-                    if($result2){
-                        echo '<script>alert("Vô hiệu hóa thành công");
-                        window.location.href = "ql_sinhvien.php"
+            if (isset($_POST['btn-browse'])){
+                $manhanvien = $_GET['MaNV'];
+                $result = mysqli_query($conn,"SELECT * FROM tbl_nhanvien WHERE MaNV = '$manhanvien'");
+                $row=mysqli_fetch_assoc($result);
+                if (
+                    empty($row['MaNV']) || 
+                    empty($row['TenNV']) || 
+                    empty($row['Phone']) || 
+                    empty($row['CCCD']) || 
+                    empty($row['DiaChi']) || 
+                    !isset($row['GioiTinh']) || 
+                    empty($row['Image']) || 
+                    empty($row['ImageCCCDFront']) || 
+                    empty($row['ImageCCCDBack'])
+                ) {
+                    echo "<script>alert('Thông tin chưa đầy đủ để được duyệt');
+                    window.location.href = 'ql_nhanvien.php'
+                    </script>";
+                }
+                else{
+                    $result_edit = mysqli_query($conn,"UPDATE tbl_nhanvien SET TrangThai = '1'  WHERE MaNV='$manhanvien'");
+                    if($result_edit)
+                    {
+                        echo '<script>alert("Duyệt thành công");
+                        window.location.href = "ql_nhanvien.php"
                         </script>';
                     }
-
+                    else
+                    {
+                        echo '<script>alert("Lỗi khi duyệt");
+                        window.location.href = "ql_nhanvien.php"
+                        </script>';
+                    } 
+                }
+                
+            }
+            else if(isset($_POST['btn-cancel']))
+            {
+                $manhanvien = $_GET['MaNV'];
+                $result = mysqli_query($conn,"UPDATE tbl_nhanvien SET TrangThai = '0'  WHERE MaNV='$manhanvien'");
+                if($result)
+                {
+                    echo '<script>alert("Đã vô hiệu thành công");
+                    window.location.href = "ql_nhanvien.php"
+                    </script>';
                 }
                 else
                 {
                     echo '<script>alert("Lỗi khi vô hiệu hóa");
-                    window.location.href = "ql_sinhvien.php"
+                    window.location.href = "ql_nhanvien.php"
                     </script>';
                 } 
             }
             else if(isset($_POST['btn-edit'])){
-                $masinhvien = $_GET['MaSV'];
-                $tensinhvien=$_POST['name'];
+                $manhanvien = $_GET['MaNV'];
+                $tennhanvien=$_POST['name'];
                 $gioitinh=$_POST['sex'];
                 $sdt=$_POST['phone'];
                 $cccd=$_POST['cccd'];
                 $diachi=$_POST['address'];
-                $maphong=$_POST['room'];
-                $lop = $_POST['class'];
                 $password = $_POST['password'];
-
-                $current_image_query = mysqli_query($conn,"SELECT * FROM tbl_sinhvien WHERE MaSV = '$masinhvien'");
+                
+                $current_image_query = mysqli_query($conn,"SELECT * FROM tbl_nhanvien WHERE MaNV = '$manhanvien'");
                 $current_image_row = mysqli_fetch_assoc($current_image_query);
                 $current_image  = $current_image_row['Image'];
                 $current_imagecccdfront  = $current_image_row['ImageCCCDFront'];
@@ -93,61 +122,42 @@
                 else{
                     $image_save3 = $current_image;
                 }
-                    $currentStudentQuery = mysqli_query($conn, "SELECT * FROM tbl_sinhvien WHERE Username = '$username'");
-                    $currentStudent = mysqli_fetch_assoc($currentStudentQuery);
-                    $currentMaPhong = $currentStudent['MaPhong'];
-                    $view_check_room = mysqli_query($conn,"SELECT * FROM tbl_phong WHERE MaPhong = '$maphong'");
-                    $row_check_room = mysqli_fetch_assoc($view_check_room);
-                    $view_check_phone = mysqli_query($conn,"SELECT * FROM tbl_sinhvien WHERE Phone= '$sdt'");
-                    $view_check_cccd = mysqli_query($conn,"SELECT * FROM tbl_sinhvien WHERE CCCD= '$cccd'");
-                    if(mysqli_num_rows($view_check_phone)>1)
+                $view_check_phone = mysqli_query($conn,"SELECT * FROM tbl_nhanvien WHERE Phone= '$sdt'");
+                $view_check_cccd = mysqli_query($conn,"SELECT * FROM tbl_nhanvien WHERE CCCD= '$cccd'");
+                if(mysqli_num_rows($view_check_phone)>1)
+                {
+                    echo '<script>alert("Số điện thoại đã được sử dụng")
+                    window.location.href = "ql_nhanvien-edit.php?MaNV='.$manhanvien.'"</script>';
+                }
+                else if(mysqli_num_rows($view_check_cccd)>1)
+                {
+                    echo '<script>alert("Số CCCD đã được sử dụng")
+                    window.location.href = "ql_nhanvien-edit.php?MaNV='.$manhanvien.'"</script>';
+                }
+                else{
+                    $result1 = mysqli_query($conn,"UPDATE tbl_nhanvien SET TenNV='$tennhanvien',GioiTinh='$gioitinh',Phone='$sdt',CCCD='$cccd',Image='$image_save3',DiaChi='$diachi',ImageCCCDFront='$image_save1',ImageCCCDBack='$image_save2'  WHERE Username = '$username'");
+                    $result2 = mysqli_query($conn,"UPDATE tbl_account SET password = '$password' WHERE username = '$username'");
+                    if($result1 && $result2)
                     {
-                        echo '<script>alert("Số điện thoại đã được sử dụng")
-                        window.location.href = "ql_sinhvien-edit.php?MaSV='.$masinhvien.'"</script>';
-                    }
-                    else if(mysqli_num_rows($view_check_cccd)>1)
-                    {
-                        echo '<script>alert("Số CCCD đã được sử dụng")
-                        window.location.href = "ql_sinhvien-edit.php?MaSV='.$masinhvien.'"</script>';
-                    }
-                    else if($row_check_room['LoaiPhong']!= $gioitinh)
-                    {
-                        echo '<script>alert("Giới tính không trùng với loại phòng")
-                        window.location.href = "ql_sinhvien-edit.php?MaSV='.$masinhvien.'"</script>';
-                    }
-                    else if ($currentMaPhong != $maphong && $row_check_room['SoSV'] >= $row_check_room['SoLuong']) 
-                    {
-                        echo '<script>alert("Phòng đã đầy"); 
-                        window.location.href ="ql_sinhvien-edit.php?MaSV='.$masinhvien.'";</script>';
-                    }
-
-                    else
-                    {
-                        $result1 = mysqli_query($conn,"UPDATE tbl_sinhvien SET TenSV='$tensinhvien',GioiTinh='$gioitinh',Phone='$sdt',CCCD='$cccd',Image='$image_save3',DiaChi='$diachi',ImageCCCDFront='$image_save1',ImageCCCDBack='$image_save2',MaPhong='$maphong',Class='$lop' WHERE Username='$username'");
-                        $result2 = mysqli_query($conn,"UPDATE tbl_account SET password = '$password' WHERE username = '$username'");
-                        if($result1 && $result2)
-                        {
-                            mysqli_query($conn, "UPDATE tbl_phong SET SoSV = SoSV - 1 WHERE MaPhong = '$currentMaPhong'");
-                            mysqli_query($conn, "UPDATE tbl_phong SET SoSV = SoSV + 1 WHERE MaPhong = '$maphong'");
-                    
-                            echo '<script>alert("Sửa thành công"); window.location.href = "ql_sinhvien-edit.php?MaSV='.$masinhvien.'";</script>';
-                        } else {
-                            echo '<script>alert("Cập nhật thất bại"); window.location.href = "ql_sinhvien-edit.php?MaNV='.$masinhvien.'";</script>';
-                        }   
-                    }            
+                        echo '<script>alert("Sửa thành công");
+                        window.location.href =  "ql_nhanvien-edit.php?MaNV='.$manhanvien.'";
+                        </script>';
+                    }        
+                }
             }
             else{
-                $masinhvien = $_GET['MaSV'];
-                $res_tag = $res_name = $res_phone = $res_cccd= $res_sex = $res_img = $res_address = "";
+                $manhanvien = $_GET['MaNV'];
+
+                $res_tag = $res_name = $res_phone = $res_cccd= $res_sex = $res_img = $res_address = $res_username=$rest_password="";
                 $res_img  = "images.png";
                 $res_imgcccdback=$res_imgcccdfront = "images2.jpg";
-                $result = mysqli_query($conn,"SELECT * FROM tbl_sinhvien WHERE MaSV = '$masinhvien'");
-                if($result && mysqli_num_rows($result) > 0)
+                $result = mysqli_query($conn,"SELECT * FROM tbl_nhanvien WHERE MaNV = '$manhanvien'");
+                if($result)
                 {
                     $row = mysqli_fetch_assoc($result);
                     $res_username = $row['Username'];
-                    $res_tag = $row['MaSV'];
-                    $res_name = $row['TenSV'];
+                    $res_tag = $row['MaNV'];
+                    $res_name = $row['TenNV'];
                     $res_sex = $row['GioiTinh'];
                     $res_phone = $row['Phone'];
                     $res_cccd = $row['CCCD'];
@@ -155,8 +165,6 @@
                     $res_imgcccdback = !empty($row['ImageCCCDBack']) ? $row['ImageCCCDBack'] : 'images2.jpg';
                     $res_address = $row['DiaChi'];
                     $res_img = !empty($row['Image']) ? $row['Image'] : 'images.png';   
-                    $res_class= $row['Class'];
-                    $res_room = $row['MaPhong'];
                     $account = mysqli_query($conn,"SELECT * FROM tbl_account WHERE username = '$res_username'");
                     $row_account = mysqli_fetch_assoc($account);
                     $res_password = $row_account['password'];
@@ -165,28 +173,28 @@
         
         ?>
         <div class="heading">
-            <a href="ql_sinhvien.php" id="goback"><i class="bi bi-arrow-left"></i></a>
+            <a href="ql_nhanvien.php" id="goback"><i class="bi bi-arrow-left"></i></a>
             <div><img class ="avatar" src="../image/<?php echo $res_img ?>"> 
             <input type="file" name="img" id="img" accept=".jpg, .jpeg, .png" autocomplete="off">      
             </div>
         </div>
         <div class="container">
             <div class="row">
-            <div class="row">
                 <div class="title-info">Tài khoản, mật khẩu</div>
                     <div class="col">
                         <div class="box">
                             <label>Tài khoản</label>
-                            <input type="text" name="username" value='<?php echo $res_username ?>' id="phone" autocomplete="off" required placeholder="Nhập tài khoản"> 
+                            <input type="text" name="username" value='<?php echo $res_username ?>' id="username" autocomplete="off" required placeholder="Nhập tài khoản" disabled> 
                         </div>
                     </div>
                     <div class="col">
                         <div class="box">
                             <label>Mật khẩu</label>
-                            <input type="password" name="password" value='<?php echo $res_password ?>' autocomplete="off" required placeholder="Nhập mật khẩu" pattern=".{8,16}" placeholder="Tài khoản (8-16 ký tự)">
+                            <input type="password" name="password" value='<?php echo $res_password ?>' id ="password" autocomplete="off" required placeholder="Nhập mật khẩu" pattern=".{8,16}" title="Tài khoản phải có từ 8 đến 16 ký tự.">
                         </div>
                     </div>
                 </div>
+            <div class="row">
                 <div class="title-info">Thông tin cá nhân</div>
                     <div class="col">
                         <div class="box">
@@ -197,7 +205,7 @@
                     <div class="col">
                         <div class="box">
                             <label>Mã người dùng</label>
-                            <input type="text" name="tag" value='<?php echo $res_tag ?>' id="tag" autocomplete="off" disabled  placeholder="Nhập mã sinh viên (VD:73DCTT00000)" pattern="\d{2}[A-Z]{4}\d{5}" title="Hãy nhập đúng định dạng mã sinh viên" >
+                            <input type="text" name="tag" value='<?php echo $res_tag ?>' id="tag" autocomplete="off" disabled placeholder="Nhập mã nhân viên (VD:NV00)" pattern="^NV\d{2}$" title="Hãy nhập đúng định dạng mã nhân viên" >
                         </div>
                     </div>
                     <div class="col">
@@ -214,13 +222,13 @@
                     <div class="col">
                         <div class="box">
                             <label>Số điện thoại</label>
-                            <input type="text" name="phone" id="phone" value='<?php echo $res_phone ?>' autocomplete="off" required placeholder="Nhập số điện thoại cá nhân" pattern="0[0-9]{9}" title="Sai định dạng"> 
+                            <input type="text" name="phone" id="phone" value='<?php echo $res_phone ?>' autocomplete="off" required placeholder="Nhập số điện thoại cá nhân" pattern="0[0-9]{9}" title="Sđt phải có đủ 10 số bắt đầu từ số 0"> 
                         </div>
                     </div>
                     <div class="col">
                         <div class="box">
                             <label>Số CCCD</label>
-                            <input type="text" name="cccd" id="cccd" value='<?php echo $res_cccd ?>' autocomplete="off" required placeholder="Nhập số CCCD" pattern="[0-9]{12}" title="Sai định dạng">
+                            <input type="text" name="cccd" id="cccd" value='<?php echo $res_cccd ?>' autocomplete="off" required placeholder="Nhập số CCCD" pattern="[0-9]{12}" title="CCCD phải đủ 12 số">
                         </div>
                     </div>
                 </div>
@@ -249,42 +257,27 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" id ="for-student">
-                        <div class="title-info">Phòng, Lớp</div>
-                        <div class="col">
-                            <div class="box">
-                                <label>Phòng</label>
-                                <select name="room" >
-                                <?php
-                                    $result=mysqli_query($conn,"SELECT * FROM tbl_phong");
-                                    if ($result && mysqli_num_rows($result) > 0) {
-                                        while ($row = mysqli_fetch_assoc($result) ) {
-                                                    $selected = ($row["MaPhong"] == $res_room) ? "selected" : "";
-                                                    $RoomType = ($row["LoaiPhong"] == 0) ? "Phòng nam" : "Phòng nữ";
-                                                    echo '<option value="' . $row["MaPhong"] . '"'.$selected.'>'.$row["TenPhong"].' - '.$RoomType.' - '.$row["SoSV"].'/'.$row["SoLuong"].'</option>';
-                                                
-                                            }
-                                         }
-                                    
-                                    else{
-                                        echo '<option>Không còn phòng trống</option>';
-                                    }
-                                ?>
-                                </select>
-                            </div>
-                            
-                        </div>
-                        <div class="col">
-                            <div class="box">
-                                <label>Lớp</label>
-                                <input type="text" name="class"  value='<?php echo $res_class ?>' autocomplete="off" placeholder="Nhập lớp"> 
-                            </div>
-                        </div>
-                    </div>
+                <?php if($row['TrangThai']==0) { ?>
+                    <div class="btn-browse-div"><input type="submit" name="btn-browse" class="btn-function" value="Duyệt"></div>
+                    <script>
+                        document.getElementById("name").disabled = true;
+                        document.getElementById("sex").disabled = true;
+                        document.getElementById("phone").disabled = true;
+                        document.getElementById("cccd").disabled = true;
+                        document.getElementById("address").disabled = true;
+                        document.getElementById("imgcccdfront").disabled = true;
+                        document.getElementById("imgcccdback").disabled = true;
+                        document.getElementById("password").disabled = true;
+                        document.getElementById("img").disabled = true;
+
+                    </script>
+                    
+                <?php } else { ?>
                     <div class="btn-div">
                         <div class="btn-edit-div"><input type="submit" name="btn-edit" class="btn-function" value="Sửa"></div>
                         <div class="btn-cancel-div"><input type="submit" name="btn-cancel" class="btn-function" value="Vô hiệu"></div>
                     </div>
+                <?php } ?>
         </div>
     </form>
 </body>
