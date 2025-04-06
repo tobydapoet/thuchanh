@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require("../db/connect.php");
+    require('db/connect.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,7 +83,7 @@
                 <button  class="signup-btn">Đăng ký</button>
             </div>
             <?php
-                     require("../db/connect.php");
+                     require('db/connect.php');
                      if(isset($_POST['login-btn'])){
                         $username = $_POST['username-login'];
                         $password = $_POST['password-login'];
@@ -116,7 +116,7 @@
                     </div>
                 </form>
                 <?php
-                     require("../db/connect.php");
+                     require('db/connect.php');
                      if(isset($_POST['signup-btn'])){
                         $username = $_POST['username-register'];
                         $password = $_POST['password-register'];
@@ -200,21 +200,21 @@
             <h1 style="font-weight: bold;">Các loại phòng</h1>
             <div class="card-container">
                 <div class="card">
-                    <img src="../image/phong82.jpg" class="card-img">
+                    <img src="./image/phong82.jpg" class="card-img">
                     <div class="card-body">
                          <h5 style="font-size: 16px;font-weight: 600;">Phòng 8 người</h5>
                         <div style="font-size: 14px;">250.000đ/người</div>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="../image/phong6.jpg" class="card-img">
+                    <img src="./image/phong6.jpg" class="card-img">
                     <div class="card-body">
                          <h5 style="font-size: 16px;font-weight: 600;">Phòng 6 người</h5>
                         <div style="font-size: 14px;">500.000đ/người</div>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="../image/4 khong ml.jpg" class="card-img">
+                    <img src="./image/4 khong ml.jpg" class="card-img">
                     <div class="card-body">
                          <h5 style="font-size: 16px;font-weight: 600;">Phòng 4 người</h5>
                         <div style="font-size: 14px;">700.000đ/người</div>
