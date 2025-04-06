@@ -1,0 +1,149 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container-thongke {
+    margin: 20px;
+    width: 98%;
+}
+
+.box {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border: none;
+    background-color: white;
+    width: 100%;
+}
+
+#chart-container .col {
+    height: 700px;
+}
+
+#chart-container .box {
+    height: 500px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#monthlyRevenueChart {
+    padding-bottom: 70px;
+}
+
+#chart-circle div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box label {
+    font-weight: 500;
+}
+
+.box p {
+    font-size: 30px;
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+
+/* #row-chart .box{
+    padding: 10px;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+} */
+
+#row-header .box {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+}
+
+#row-footer .box {
+    background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+
+/* .dashboard {
+
+    margin: 20px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+} */
+
+
+/* .overview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    margin-bottom: 20px;
+}
+
+.info-box {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    transition: background 0.5s;
+
+} */
+
+
+/*
+.info-box h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333333;
+}
+
+.info-box p {
+    font-size: 1.2em;
+    color: #666666;
+}
+
+.charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    margin-bottom: 20px;
+}
+
+.chart {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: background 0.5s;
+}
+
+.chart h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333333;
+}
+
+.details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.detail-item {
+    background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: background 0.5s;
+}
+
+.detail-item h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333333;
+}
+
+.detail-item p {
+    font-size: 1.2em;
+    color: #666666;
+} */
