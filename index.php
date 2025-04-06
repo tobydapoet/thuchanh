@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="contact-media">
-    <ul class="contact">
+    <ul class="contact"> 
         <li>
             <a href="tel:02435526713"><i class="bi bi-telephone"></i> 02435526713</a>
         </li>
