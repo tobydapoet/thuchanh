@@ -1,3 +1,4 @@
 <?php
-    $conn = mysqli_connect("127.0.0.1","root","","ktx",3307) or die("Error occured");
+    $conn = mysqli_connect("localhost", "root", "hongmai", "ktx", 3306) or die("Error occured");
 ?>
+
