@@ -169,7 +169,7 @@
 
         <section  id="login" class="main-login" style="background-image: url(image/646c15d1be5aea73d04b9dfbabb244ea.jpg);">
             <div class="container">
-                <h1 style="font-weight: bold;">KÍ TÚC XÁ UTT</h1>
+                <h1 style="font-weight: bold;">ĐÂY LÀ KÍ TÚC XÁ</h1>
                 <button class="login-lobby">Đăng nhập</button>
             </div>
         </section>
