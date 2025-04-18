@@ -6,7 +6,7 @@ body{
 }
 .header{
     z-index: 1000;
-    background-color: white;
+    background-color: rgb(232, 128, 128);
     height: 70px;
     display: flex;
     white-space: nowrap;
