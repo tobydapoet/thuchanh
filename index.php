@@ -36,7 +36,7 @@
             <button class="menu-active" id="menu-active"><i class="bi bi-list"></i></button>
         </div>
         <div class="header-logo">
-            <a href="index.php"><img style="width: 250px;" src="../image/1447346709LOGO_GTVT.png"></a>
+            <a href="index.php"><img style="width: 250px;" src="./image/1447346709LOGO_GTVT.png"></a>
         </div>
         <div class="header-links">
             <a href="#login">Trang chủ</a>
